@@ -1,0 +1,6 @@
+{
+  "java.configuration.updateBuildConfiguration": "automatic",
+  "java.errors.incompleteClasspath.severity": "warning",
+  // 1. Dateien NICHT im Projekt-Root erzeugen (hält den Ordner sauber)
+  "java.import.generatesMetadataFilesAtProjectRoot": false,
+}

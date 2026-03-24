@@ -1,0 +1,65 @@
+{
+  "name": "Objektorientierte Programmierung - Java 21",
+  "image": "mcr.microsoft.com/devcontainers/java:21-bookworm", 
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/devcontainers/features/java:1": {
+      "version": "21",
+      "installMaven": "true"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "vscjava.vscode-java-pack",      // Enthält: Language Support, Debugger, Maven, Test Runner
+        "visualstudioexptteam.vscodeintellicode"
+      ],
+      "settings": {
+        // Java-spezifische Einstellungen
+        "java.server.launchMode": "Standard",
+        "java.autobuild.enabled": true,
+        "java.configuration.runtimes": [
+          {
+            "name": "JavaSE-21",
+            "path": "/usr/lib/jvm/msopenjdk-current",
+            "default": true
+          }
+        ],
+        "[java]": {
+          "editor.defaultFormatter": "redhat.java",
+          "editor.formatOnSave": true,
+          "editor.tabSize": 4,
+          "editor.insertSpaces": true
+        },
+        "java.format.insertSpaces": true,
+        "java.format.tabSize": 4,
+        // Editoreinstellungen
+        "extensions.ignoreRecommendations": true,
+        "editor.tabSize": 4,
+        "editor.insertSpaces": true,
+        "editor.inlineSuggest.enabled": false,
+        // Copilot-Einstellungen und Chat-Einstellungen
+        "github.copilot.enable": {
+          "*": false
+        },
+        "github.copilot.editor.enableAutoCompletions": false,
+        "github.copilot.inlineSuggest.enable": false,
+        "github.copilot.chat.enabled": false,
+        "github.copilot.advanced": {
+          "inlineChat.enabled": false,
+          "authorizationFallback": false
+        },
+        "chat.commandCenter.enabled": false,
+                "[github-copilot]": {
+                    "editor.defaultFormatter": null
+                },
+                "chat.agent.enabled": false,
+                "chat.viewWelcome.enabled": false,
+                "chat.disableAIFeatures": true
+      }
+    }
+  },
+  "remoteUser": "vscode",
+  "updateRemoteUserUID": true,
+  "postCreateCommand": "mvn clean compile"
+}
