@@ -3,20 +3,6 @@
   "configurations": [
     {
       "type": "java",
-      "name": "Main",
-      "request": "launch",
-      "mainClass": "de.fhswf.inf.oop.aufgabe1.uebung2.Main",
-      "projectName": "objektorientierte-programmierung"
-    },
-    {
-      "type": "java",
-      "name": "Main",
-      "request": "launch",
-      "mainClass": "de.fhswf.inf.oop.aufgabe1.uebung1.Main",
-      "projectName": "objektorientierte-programmierung"
-    },
-    {
-      "type": "java",
       "name": "Aktuelle Datei ausführen",
       "request": "launch",
       "mainClass": "${file}"
