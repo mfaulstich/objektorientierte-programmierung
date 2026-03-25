@@ -10,8 +10,8 @@ public class Main {
 	private static final byte OUTPUT_MOTOR_RIGHT = 1;
 	private static final byte OUTPUT_MOTOR_LEFT = 2;
 	private static final byte OUTPUT_BREAK_ON = 4;
-	private static final byte LIMIT_RIGHT = 16;
-	private static final byte LIMIT_LEFT = 32;
+	private static final byte INPUT_LIMIT_RIGHT = 16;
+	private static final byte INPUT_LIMIT_LEFT = 32;
 
 	/**
 	 * Startmethode der Anwendung
@@ -21,13 +21,13 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		// Setze Ausgangssituation
-		byte value = LIMIT_RIGHT;
+		byte value = INPUT_LIMIT_RIGHT;
 		System.out.println(toBinaryString(value));
 		value |= OUTPUT_MOTOR_RIGHT;
 		System.out.println(toBinaryString(value));
 		value &= ~OUTPUT_MOTOR_RIGHT;
 		System.out.println(toBinaryString(value));
-		System.out.printf("Limit right: %s\n", (value &= LIMIT_RIGHT) != 0 ? "On" : "Off");
+		System.out.printf("Endschalter rechts: %s\n", (value &= INPUT_LIMIT_RIGHT) != 0 ? "An" : "Aus");
 	}
 
 	/**
