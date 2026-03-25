@@ -34,3 +34,4 @@ target/
 # OS spezifisch
 .DS_Store
 Thumbs.db
+/.project

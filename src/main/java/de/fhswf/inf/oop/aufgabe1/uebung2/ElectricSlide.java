@@ -33,11 +33,29 @@ public class ElectricSlide {
     private boolean rotating_right;
     private boolean motorBreak;
 
-    byte pioState;
+    private byte pioState;
 
     public byte nextCycle(byte pioState) {
 
-        // Ausmaskieren der Read-Only-Pins
+        byte writeableNew = (byte)(pioState & 0x0F);
+        byte writeableOld = (byte)(this.pioState & 0x0F);
+        int changeCount = 0;
+        for (int i=0; i<=4; i++){
+   			byte a = (byte) (writeableOld & 1);
+			writeableOld = (byte) (writeableOld >> 1);
+   			byte b = (byte) (writeableNew & 1);
+			writeableNew = (byte) (writeableNew >> 1);
+            changeCount = a != b ? changeCount+1 : changeCount;
+        }
+        if (changeCount > 1){
+            throw new IllegalStateException(String.format(
+                "Ungültige Anzahl von Eingängen geändert, war %s ist %s", 
+                toBinaryString((byte) (this.pioState & 0x0F)),
+                toBinaryString((byte) (pioState & 0x0F))
+            ));
+        }
+
+
         byte newPioState = (byte) (this.pioState & 0xF0);
         newPioState = (byte) (pioState & 0x0F);
 
