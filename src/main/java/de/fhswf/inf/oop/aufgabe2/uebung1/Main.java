@@ -2,7 +2,6 @@ package de.fhswf.inf.oop.aufgabe2.uebung1;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
@@ -12,6 +11,10 @@ public class Main {
     private static final String DESCRIPTION = "Geben Sie einen Namen ein. Abbruch mit \"q\"";
 
     public static void main(String[] args) {
+
+        /*
+        Namensliste anlegen
+         */
         List<String> names = new ArrayList<>();
         Scanner scanner = new Scanner(System.console().reader());
         boolean canceled = false;
@@ -31,12 +34,18 @@ public class Main {
             }
         }
 
+        /*
+        Ursprungs-Namensliste ausgeben
+        */
         System.out.println("Inhalt Ursprungsliste:");
         for (String name: names){
             System.out.println(name);
         }
         System.out.println();
                 
+        /*
+        Liste mit eindeutigen Namen erzeugen und ausgeben.
+         */
         List<String> names2 = new ArrayList<>();
         for (String name: names){
             if (!names2.contains(name)){
@@ -50,6 +59,9 @@ public class Main {
         }
         System.out.println();
 
+        /*
+        Sortierte Liste Collection eindeutiger Namen mit TreeSet erzeugen.
+         */
         Set<String> wordSet = new TreeSet<>(names);
         System.out.println("Inhalt Set:");
          for (String name: wordSet){
