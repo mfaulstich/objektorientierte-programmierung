@@ -1,69 +1,102 @@
 package de.fhswf.inf.oop.aufgabe3.uebung1;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.TreeMap;
 
 public class Main {
-    private static final String DESCRIPTION = "Geben Sie einen Namen ein. Abbruch mit \"q\"";
+    private static final String DESCRIPTION = "Kursliste verwalten\nA: Kurse anzeigen\nN: Neuen Kurs anlegen\nS: Kurs suchen\nq: Abbrechen\n";
+    private static final String TABLE_FORMAT = "%-20s %-20s\n";
 
     public static void main(String[] args) {
-        List<String> lines = new ArrayList<>();
-        lines.add(
-                "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et ");
-        lines.add(
-                "dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet ");
-        lines.add(
-                "clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, ");
-        lines.add(
-                "consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, ");
-        lines.add(
-                "sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea ");
-        lines.add(
-                "takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed ");
-        lines.add(
-                "diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et ");
-        lines.add(
-                "accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.");
-        lines.add(
-                "Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu ");
-        lines.add(
-                "feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril ");
-        lines.add(
-                "delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, ");
-        lines.add("sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.");
-        lines.add(
-                "Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea ");
-        lines.add(
-                "commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, ");
-        lines.add(
-                "vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent ");
-        lines.add("luptatum zzril delenit augue duis dolore te feugait nulla facilisi.");
-        lines.add(
-                "Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim ");
-        lines.add(
-                "assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet ");
-        lines.add(
-                "dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit ");
-        lines.add("lobortis nisl ut aliquip ex ea commodo consequat.  ");
-        Map<String, Integer> wordMap = new HashMap<String, Integer>();
-        for (String line: lines){
-            for (String word: line.split("[\\p{Space}]+")){
-                Integer count = wordMap.putIfAbsent(word, 1);
-                if (count != null){
-                    wordMap.put(word, count+1);
-                }
+        Map<String, String> coures = new TreeMap<>();
+        // Scannerobjekt für das Einlesen einer einzelnen und mehrerer Zeilen.
+        Scanner scanner = new Scanner(System.console().reader());
+        boolean canceled = false;
+        System.out.println(DESCRIPTION);
+        while (!canceled && scanner.hasNextLine()) {
+            String input = scanner.nextLine();
+            switch (input) {
+                case "q":
+                    canceled = true;
+                    break;
+                case "A":
+                    if (coures.size() == 0) {
+                        System.out.println("Leider können wir zur Zeit keine Kurse anbieten.");
+                    } else {
+
+                        System.out.println("User Kursangebot:");
+                        System.out.printf(TABLE_FORMAT, "Kursnummer", "Kursname");
+                        for (Map.Entry<String, String> course : coures.entrySet()) {
+                            System.out.printf(TABLE_FORMAT, course.getKey(), course.getValue());
+                        }
+                    }
+                    break;
+                case "N":
+                    /*
+                     * Kurscode einlesen
+                     */
+                    System.out.println("Bitte geben Sie einen Kurscode ein:");
+                    scanner.hasNextLine();
+                    String code = scanner.nextLine();
+                    if (code.trim().isEmpty()) {
+                        System.out.printf("Die Eingabe \"%s\" ist keine gültiger Kursname!\n", code);
+                        break;
+                    }
+
+                    /*
+                     * Kursname einlesen
+                     */
+                    System.out.println("Bitte geben Sie einen Kursnamen ein:");
+                    scanner.hasNextLine();
+                    String name = scanner.nextLine();
+                    if (name.trim().isEmpty()) {
+                        System.out.printf("Die Eingabe \"%s\" ist keine gültiger Kursname!\n", name);
+                        break;
+                    }
+
+                    /*
+                     * Bestätigung der Eingabe
+                     */
+                    String selection;
+                    do {
+                        System.out.println("Kurs anlegen? j/n:");
+                        System.out.printf(TABLE_FORMAT, code, name);
+                        scanner.hasNextLine();
+                        selection = scanner.nextLine();
+                        if (!(selection.equals("j") || selection.equals("n"))) {
+                            System.out.printf("Die Eingabe \"%s\" keine gültige Auswahl!\n", selection);
+                        }
+                    } while (!(selection.equals("j") || selection.equals("n")));
+                    if (selection.equals("j")){
+                        coures.put(code, name);
+                    }
+                    break;
+                case "S":
+                    System.out.println("Bitte geben Sie einen Kurscode ein:");
+                    scanner.hasNextLine();
+                    code = scanner.nextLine();
+                    if (code.trim().isEmpty()) {
+                        System.out.printf("Die Eingabe \"%s\" ist keine gültiger Kurscode!\n", code);
+                    } else {
+                        name = coures.get(code);
+                        if (name == null){
+                        System.out.printf("Ein Kurs mit dem Code \"%s\" ist nicht vorhanden\n", code);
+                        }
+                        else {
+                            System.out.println("Kurs gefunden:");
+                            System.out.printf(TABLE_FORMAT, code, name);
+                        }
+                    }
+                    break;
+                default:
+                    System.out.printf("Ungültige Eingabe: \"%s\"\n", input);
+                    break;
             }
-        }
-        Set<String> words = new TreeSet<>(wordMap.keySet());
-        words = Collections.unmodifiableSet(words);
-        for (String word: words){
-            System.out.printf("%-20s - %3d\n", word, wordMap.get(word));
+            if (!canceled) {
+                System.out.println();
+                System.out.println(DESCRIPTION);
+            }
         }
     }
 }
