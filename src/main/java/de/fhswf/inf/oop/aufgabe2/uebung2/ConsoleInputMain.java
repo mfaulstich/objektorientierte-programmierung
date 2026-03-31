@@ -1,4 +1,4 @@
-package de.fhswf.inf.oop.aufgabe2.uebung1;
+package de.fhswf.inf.oop.aufgabe2.uebung2;
 
 import java.util.Scanner;
 

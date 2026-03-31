@@ -16,23 +16,14 @@ public class Main {
         Namensliste anlegen
          */
         List<String> names = new ArrayList<>();
-        Scanner scanner = new Scanner(System.console().reader());
-        boolean canceled = false;
-        System.out.println(DESCRIPTION);
-        while (!canceled && scanner.hasNextLine()) {
-            String input = scanner.nextLine();
-            switch (input) {
-                case "q":
-                    canceled = true;
-                    break;
-                default:
-                    names.add(input);
-                    break;
-            }
-            if (!canceled) {
-                System.out.println(DESCRIPTION);
-            }
-        }
+        names.add("Peter Pan");
+        names.add("Peter Pan");
+        names.add("Peter Pan");
+        names.add("Karl Dall");
+        names.add("Karl Dall");
+        names.add("Benjamin Blümchen");
+        names.add("Milla Kapolke");
+        names.add("Milla Kapolke");
 
         /*
         Ursprungs-Namensliste ausgeben
