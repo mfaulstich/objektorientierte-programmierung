@@ -70,6 +70,7 @@ public abstract class Person {
 
     /**
      * Gibt eine Beschreibung der Rolle zurück.
+     * 
      * @return Beschreibung der Rolle.
      */
     public abstract String getRoleDescription();
