@@ -3,7 +3,6 @@ package de.fhswf.inf.oop.aufgabe2.uebung1;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeSet;
 

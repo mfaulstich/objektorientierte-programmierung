@@ -1,6 +1,5 @@
 package de.fhswf.inf.oop.aufgabe1.uebung1;
 
-import java.util.function.Function;
 
 /**
  * Aufgabe 1 Übung 1: Umgang mit Bitmasken
