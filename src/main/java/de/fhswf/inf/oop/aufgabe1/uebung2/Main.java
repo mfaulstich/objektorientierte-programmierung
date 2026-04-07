@@ -1,41 +1,54 @@
 package de.fhswf.inf.oop.aufgabe1.uebung2;
 
 public class Main {
+    public static void main(String[] args) {
+        byte myByte = 5;
+        short myShort = 5;
+        int myInt = 5;
+        long myLong = 5;
+        float myFloat = 5.0f;
+        double myDouble = 5.0;
 
-	private static final byte OUTPUT_MOTOR_RIGHT = ElectricSlide.OUTPUT_MOTOR_RIGHT;
-	private static final byte OUTPUT_MOTOR_LEFT = ElectricSlide.OUTPUT_MOTOR_LEFT;
-	private static final byte OUTPUT_BREAK = ElectricSlide.OUTPUT_BREAK;
-	private static final byte INPUT_LIMIT_RIGHT = ElectricSlide.INPUT_LIMIT_RIGHT;
-	private static final byte INPUT_LIMIT_LEFT = ElectricSlide.INPUT_LIMIT_LEFT;
+        byte b2 = myByte;
+        b2 = (byte)myShort;
+        b2 = (byte)myInt;
+        b2 = (byte)myLong;
+        b2 = (byte)myFloat;
+        b2 = (byte)myDouble;
 
+        short s2 = myByte;
+        s2 = myShort;
+        s2 = (short)myInt;
+        s2 = (short)myLong;
+        s2 = (short)myFloat;
+        s2 = (short)myDouble;
 
-	public static void main(String[] args) {
-		ElectricSlide electricSlide = new ElectricSlide();
-		byte pioState = 0;
-		pioState = electricSlide.nextCycle(pioState);
-		pioState = OUTPUT_MOTOR_LEFT;
-		pioState = electricSlide.nextCycle(pioState);
-		while ((pioState & INPUT_LIMIT_LEFT) == 0) {
-			pioState = electricSlide.nextCycle(pioState);
-		}
-		pioState &= ~OUTPUT_MOTOR_LEFT;
-		pioState = electricSlide.nextCycle(pioState);
-		pioState |= OUTPUT_BREAK;
-		pioState = electricSlide.nextCycle(pioState);
-		pioState &= ~OUTPUT_BREAK;
-		pioState = electricSlide.nextCycle(pioState);
-		pioState |= OUTPUT_MOTOR_RIGHT;
-		pioState = electricSlide.nextCycle(pioState);
-		while ((pioState & INPUT_LIMIT_RIGHT) == 0) {
-			pioState = electricSlide.nextCycle(pioState);
-		}
-		pioState &= ~OUTPUT_MOTOR_RIGHT;
-		pioState = electricSlide.nextCycle(pioState);
-		pioState |= OUTPUT_BREAK;
-		pioState = electricSlide.nextCycle(pioState);
-		pioState &= ~OUTPUT_BREAK;
-		pioState = electricSlide.nextCycle(pioState);
+        int i2 = myByte;
+        i2 = myShort;
+        i2 = myInt;
+        i2 = (int)myLong;
+        i2 = (int)myFloat;
+        i2 = (int)myDouble;
 
-	}
+        long l2 = myByte;
+        l2 = myShort;
+        l2 = myInt;
+        l2 = myLong;
+        l2 = (long)myFloat;
+        l2 = (long)myDouble;
 
+        float f2 = myByte;
+        f2 = (float)myShort;
+        f2 = (float)myInt;
+        f2 = (float)myLong;
+        f2 = (float)myFloat;
+        f2 = (float)myDouble;
+
+        double d2 = myByte;
+        d2 = (double)myShort;
+        d2 = (double)myInt;
+        d2 = (double)myLong;
+        d2 = (double)myFloat;
+        d2 = (double)myDouble;
+    }
 }
