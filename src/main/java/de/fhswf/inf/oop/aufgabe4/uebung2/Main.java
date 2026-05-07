@@ -6,6 +6,8 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class Main {
+    private static final int COUNT_LEN = 10;
+
     public static void main(String[] args) {
         List<String> loreIpsum = new ArrayList<>();
         loreIpsum.add("Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.\n");
@@ -32,8 +34,11 @@ public class Main {
         		maxWordLength = Math.max(maxWordLength, word.length());
         	}
         }
-        String format = "%-" + (maxWordLength+3) +"s%3d\n";
-        System.out.println(format);
+        String headerFormat = "%-" + (maxWordLength+3) +"s%-" + COUNT_LEN + "s\n";
+        String format = "%-" + (maxWordLength+3) +"s%" + COUNT_LEN +"d\n";
+        System.out.printf(headerFormat, "Wort", "Häufigkeit");
+        String minus = "-";
+        System.out.printf(headerFormat, minus.repeat(maxWordLength), minus.repeat(COUNT_LEN));
         for(String word: wordCounts.keySet()) {
         	System.out.printf(format, word, wordCounts.get(word));
         }
