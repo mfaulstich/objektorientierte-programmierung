@@ -1,4 +1,4 @@
-package de.fhswf.inf.oop.aufgabe9.zahlung;
+package de.fhswf.inf.oop.aufgabe9.kommerz;
 
 import java.util.ArrayList;
 import java.util.List;

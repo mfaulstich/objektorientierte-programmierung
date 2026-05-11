@@ -1,7 +1,7 @@
-package de.fhswf.inf.oop.aufgabe9.zahlung;
+package de.fhswf.inf.oop.aufgabe9.kommerz;
 
-public class Ueberweisung extends Transaction {
-    public Ueberweisung(String id, double betrag) {
+public class Kreditkarte extends Transaction {
+    public Kreditkarte(String id, double betrag) {
         super(id, betrag);
     }
 
@@ -9,4 +9,5 @@ public class Ueberweisung extends Transaction {
     public void ausfuehren() {
         System.out.printf("Führe %s.ausfuehren() aus mit einem Betrag von %.2f\n", getClass().getSimpleName(), getBetrag());
     }
+
 }

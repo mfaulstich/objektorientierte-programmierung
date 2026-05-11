@@ -1,4 +1,4 @@
-package de.fhswf.inf.oop.aufgabe9.zahlung;
+package de.fhswf.inf.oop.aufgabe9.kommerz;
 
 public interface PremiumKunde {
 
