@@ -20,7 +20,11 @@ public class Main {
 				.sorted() // Alphabetisch sortieren
 				.collect(Collectors.toList()); // In Ergebnisliste sammeln
 
-		System.out.println("Ergebnis Aufgabe 1: " + bereinigteNamen);
+		
+		System.out.println("Ergebnis Aufgabe 1: ");
+		for (String name: bereinigteNamen){
+			System.out.println(name);
+		}
 		System.out.println();
 	}
 
